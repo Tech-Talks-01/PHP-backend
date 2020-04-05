@@ -10,14 +10,11 @@ if(isset($_POST['login']))
      "email"    => $_POST['email'],
      "password" => $_POST['password']
     ]);
-  $s ="";
     $count = 0;
-  foreach ($cursor as $document => $a) {
-    $s=$a['email'];
+  foreach ($cursor as $document) {
     $count = 1;
   }
   if($count==1){
-    echo $s;
     header("Location:home.html");
   }else{
                echo "<script type='text/javascript'>
@@ -26,6 +23,7 @@ if(isset($_POST['login']))
   }
 }
 ?>
+
 
 <html lang="en">
   <head>
@@ -53,14 +51,13 @@ if(isset($_POST['login']))
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                   <div class="navbar-nav">
-                    <a class="nav-item nav-link" href="Home.html">Home<span class="sr-only">(current)</span></a>
                     <a class="nav-item nav-link" href="aboutUs.html">About Us</a>
                     <a class="nav-item nav-link" href="contactUs.html">Contact Us</a>
                   </div>
                 </div>
                 <ul class="nav navbar-nav navbar-right">
-                  <li><a class="nav-item nav-link active" href="registration.html">Register</a></li>
-                  <li><a class="nav-item nav-link" href="login.html">Login</a></li>
+                  <li><a class="nav-item nav-link active" href="registration.php">Register</a></li>
+                  <li><a class="nav-item nav-link" href="login.php">Login</a></li>
                 </ul>
               </nav><br>
 
@@ -72,12 +69,12 @@ if(isset($_POST['login']))
                             <form action="#" method="POST"> 
                                 <div class="form-group" >
                                 <label for="Email">Email Address</label>
-                                <input type="email" class="form-control" id="Email" aria-describedby="emailHelp" name="email">
+                                <input type="email" class="form-control" id="Email" aria-describedby="emailHelp" name="email" required>
                                 <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
                                 </div>
                                 <div class="form-group">
                                 <label for="Password">Password</label>
-                                <input type="password" class="form-control" id="Password" name="password">
+                                <input type="password" class="form-control" id="Password" name="password" required>
                                 </div>
                                 <button type="submit" class="btn btn-primary" name='login'>Submit</button>
                             </form>
